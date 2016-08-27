@@ -8,7 +8,7 @@ def quit(root):
 # If user presses button
 def pressAcceptButton():
     if (combobox1.get() in ("Past Hour", "Past Day", "Past 7 Days", "Past 30 Days") and
-                combobox2.get() in ("1.0+", "2.5+", "4.5+")):
+                combobox2.get() in ("1.0+", "2.5+", "4.5+","--ALL--")):
         userSelection.append(combobox1.get())
         userSelection.append(combobox2.get())
         quit(root)
@@ -34,7 +34,7 @@ def getUserSelection():
     combobox1.grid(row=1, column=1)
     description2 = StringVar()
     combobox2 = ttk.Combobox(root, textvariable=description2)
-    combobox2.config(values=("1.0+", "2.5+", "4.5+"))
+    combobox2.config(values=("1.0+", "2.5+", "4.5+","--ALL--"))
     combobox2.grid(row=2, column=1)
     # Button
     acceptButton = ttk.Button(root, text="Accept", command=pressAcceptButton)

@@ -20,7 +20,7 @@ def plotEq(data):
     #Formatting grapth
     plt.plot(xVal, yVal, "r.")
     plt.axis([int(min(xVal)), int(max(xVal))+1, 0, int(max(yVal))+1])
-    print(int(max(yVal))+1)
+    #print(int(max(yVal))+1)
     plt.xlabel("Earthquake Magnitude")
     plt.ylabel("Number of Felt Reports")
     plt.title("Earthquake Felt Reports and Magnitude")
