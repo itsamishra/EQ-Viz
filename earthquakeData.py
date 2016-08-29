@@ -62,8 +62,6 @@ class Earthquake:
         self.gap = JSONData["features"][eqNum]["properties"]["gap"]
         self.type = JSONData["features"][eqNum]["properties"]["type"]
 
-
-# TODO replace list with an Earthquake Data class
 def getEqData(url):
     eqData = []
     eqJSON = requests.get(url).json()
@@ -74,17 +72,14 @@ def getEqData(url):
         earthquake.addEq(eqJSON, i)
         eqData.append(earthquake)
 
-    ''' USE TO PRINT OUT CONTENTS OF ALL EARTHQUAKE OBJECTS
-    for i in eqData:
-        print(i.id, i.location, i.magnitude, i.feltReports, i.place, i.time, i.updated, i.timezone,
-          i.url, i.detail, i.cdi, i.mmi, i.alert, i.status, i.tsunami, i.sig, i.net,
-          i.code,
-          i.ids, i.sources, i.type, i.nst, i.dmin, i.rms, i.gap, i.mag, i.type)
-    '''
-
     return eqData
 
 
 
 if __name__ == '__main__':
-    getEqData("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson")
+    data = getEqData("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson")
+    for i in data:
+        print(i.id, i.location, i.magnitude, i.feltReports, i.place, i.time, i.updated, i.timezone,
+              i.url, i.detail, i.cdi, i.mmi, i.alert, i.status, i.tsunami, i.sig, i.net,
+              i.code,
+              i.ids, i.sources, i.type, i.nst, i.dmin, i.rms, i.gap, i.mag, i.type)

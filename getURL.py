@@ -39,4 +39,4 @@ def getURL(userChoice):
     return url
 
 if __name__ == '__main__':
-    getURL(["Past Hour", "1.0+"])
+    print(getURL(["Past Hour", "1.0+"]))

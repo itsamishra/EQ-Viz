@@ -13,8 +13,10 @@ def pressAcceptButton():
         userSelection.append(combobox2.get())
         quit(root)
     else:
+        # TODO convert this into a popup box
         print("Please select one of the presented options")
 
+# GUI
 def getUserSelection():
     global root, combobox1, combobox2, userSelection
     userSelection = []
