@@ -4,6 +4,9 @@ class Earthquake:
     def __init__(self):
         self.id = ""
         self.location = []
+        self.longitude = 0.0
+        self.latitude = 0.0
+        self.depth = 0.0
         self.magnitude = 0
         self.feltReports = 0
         self.place = ""
@@ -36,6 +39,9 @@ class Earthquake:
         # Setting location (format: longitude,latitude, depth)
         for i in JSONData["features"][eqNum]["geometry"]["coordinates"]:
             self.location.append(i)
+        self.longitude = self.location[0]
+        self.latitude = self.location[1]
+        self.depth = self.location[2]
         # Add from "properties" portion of JSON
         self.magnitude = JSONData["features"][eqNum]["properties"]["mag"]
         self.feltReports = JSONData["features"][eqNum]["properties"]["felt"]
@@ -78,8 +84,9 @@ def getEqData(url):
 
 if __name__ == '__main__':
     data = getEqData("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson")
-    for i in data:
-        print(i.id, i.location, i.magnitude, i.feltReports, i.place, i.time, i.updated, i.timezone,
-              i.url, i.detail, i.cdi, i.mmi, i.alert, i.status, i.tsunami, i.sig, i.net,
-              i.code,
-              i.ids, i.sources, i.type, i.nst, i.dmin, i.rms, i.gap, i.mag, i.type)
+    #for i in data:
+    #    print(i.location[2])
+#        print(i.id, i.location, i.magnitude, i.feltReports, i.place, i.time, i.updated, i.timezone,
+#              i.url, i.detail, i.cdi, i.mmi, i.alert, i.status, i.tsunami, i.sig, i.net,
+#              i.code,
+#              i.ids, i.sources, i.type, i.nst, i.dmin, i.rms, i.gap, i.mag, i.type)
