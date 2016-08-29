@@ -5,6 +5,24 @@ def plotEq(data):
     xVal = []
     yVal = []
 
+    #xAnswer = input()
+    #yAnswer = input()
+    xAnswer = "magnitude"
+    yAnswer = "feltReports"
+    for i in range(len(data)):
+        if getattr(data[i], xAnswer) != None:
+            xVal.append(getattr(data[i], xAnswer))
+        else:
+            xVal.append(0)
+        if getattr(data[i], yAnswer) != None:
+            yVal.append(getattr(data[i], yAnswer))
+        else:
+            yVal.append(0)
+
+    for i in range(len(xVal)):
+        print(xVal[i],yVal[i])
+
+    '''
     for i in data:
         if i[1] != None:
             xVal.append(i[1])
@@ -14,6 +32,7 @@ def plotEq(data):
             yVal.append(i[2])
         else:   #If i[2] == None
             yVal.append(0)
+    '''
 
     #TODO add labels indicating what time period and magnitude range is being plotted (e.g. past hour/1.0+)
     #Plotting graph
@@ -28,8 +47,10 @@ def plotEq(data):
     plt.grid()
 
     #plt.show()
-    plt.savefig("plot")
+    plt.savefig("assets/plot")
 
 
 if __name__ == '__main__':
-    plotEq([['57km SSE of Chignik Lake, Alaska', 5, None], ['Southwest Indian Ridge', 4.8, None], ['86km S of Unalaska, Alaska', 4.5, None], ['49km NNE of Visokoi Island, South Georgia and the South Sandwich Islands', 5.4, None], ['Owen Fracture Zone region', 4.9, None], ['9km W of Sarahan, India', 4.6, 3], ['7km S of Sanchez, Dominican Republic', 4.5, 51]])
+    import earthquakeData
+    data = earthquakeData.getEqData("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson")
+    plotEq(data)

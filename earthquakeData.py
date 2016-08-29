@@ -60,7 +60,6 @@ class Earthquake:
         self.dmin = JSONData["features"][eqNum]["properties"]["dmin"]
         self.rms = JSONData["features"][eqNum]["properties"]["rms"]
         self.gap = JSONData["features"][eqNum]["properties"]["gap"]
-        self.mag = JSONData["features"][eqNum]["properties"]["mag"]
         self.type = JSONData["features"][eqNum]["properties"]["type"]
 
 
@@ -89,24 +88,3 @@ def getEqData(url):
 
 if __name__ == '__main__':
     getEqData("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson")
-
-
-'''
-    # Relevent earthquake info
-    eqLocs = []
-    eqMags = []
-    eqFelt = []
-
-    # Gathering earthquake info
-    for i in eqJSON["features"]:
-        eqMags.append(i["properties"]["mag"])
-        eqLocs.append(i["properties"]["place"])
-        eqFelt.append(i["properties"]["felt"])
-
-    # Putting all data in single list
-    eqData = []
-    for i in range(len(eqLocs)):
-        eqData.append([eqLocs[i], eqMags[i], eqFelt[i]])
-
-    return eqData
-    '''
