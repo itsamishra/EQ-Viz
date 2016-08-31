@@ -1,3 +1,4 @@
+# Sets URL to value that corresponds with user selection
 def getURL(userChoice):
     url = ""
     if userChoice[0] == "Past Hour":
@@ -38,6 +39,7 @@ def getURL(userChoice):
             url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
     return url
 
+# Sets x-axis and y-axis values that correspond to user selection
 def getXYAxis(userChoice):
     x = ""
     y = ""

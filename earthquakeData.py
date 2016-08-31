@@ -1,6 +1,7 @@
 import requests
 
 class Earthquake:
+    # All earthquake features that can be scraped from USGS.gov
     def __init__(self):
         self.id = ""
         self.location = []
@@ -33,6 +34,7 @@ class Earthquake:
         self.mag = ""
         self.type = ""
 
+    # Sets variable values of Earthquake object instance to those scraped from USGS.gov
     def addEq(self, JSONData, eqNum):
         # Setting id
         self.id = JSONData["features"][eqNum]["id"]
@@ -68,6 +70,7 @@ class Earthquake:
         self.gap = JSONData["features"][eqNum]["properties"]["gap"]
         self.type = JSONData["features"][eqNum]["properties"]["type"]
 
+# Creates, manipulates, and returns list of Earthquake objects
 def getEqData(url):
     eqData = []
     eqJSON = requests.get(url).json()
@@ -80,13 +83,5 @@ def getEqData(url):
 
     return eqData
 
-
-
 if __name__ == '__main__':
     data = getEqData("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson")
-    #for i in data:
-    #    print(i.location[2])
-#        print(i.id, i.location, i.magnitude, i.feltReports, i.place, i.time, i.updated, i.timezone,
-#              i.url, i.detail, i.cdi, i.mmi, i.alert, i.status, i.tsunami, i.sig, i.net,
-#              i.code,
-#              i.ids, i.sources, i.type, i.nst, i.dmin, i.rms, i.gap, i.mag, i.type)

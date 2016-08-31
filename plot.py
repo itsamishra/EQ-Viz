@@ -2,13 +2,14 @@ import matplotlib, getUserChoice
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 
+#
 def plotEq(userChoice, data):
-    # x and y coordinates of plot
+    # All x and y values that will be plotted
     xVal = []
     yVal = []
 
+    # Adds x and y values to xVal and yVal that correspond to the variables that the user wants to plot
     xAnswer, yAnswer = getUserChoice.getXYAxis(userChoice)
-
     for i in data:
         if getattr(i, xAnswer) != None:
             xVal.append(getattr(i, xAnswer))
@@ -18,17 +19,6 @@ def plotEq(userChoice, data):
             yVal.append(getattr(i, yAnswer))
         else:
             yVal.append(0)
-    '''
-    for i in range(len(data)):
-        if getattr(data[i], xAnswer) != None:
-            xVal.append(getattr(data[i], xAnswer))
-        else:
-            xVal.append(0)
-        if getattr(data[i], yAnswer) != None:
-            yVal.append(getattr(data[i], yAnswer))
-        else:
-            yVal.append(0)
-    '''
 
     #TODO add labels indicating what time period and magnitude range is being plotted (e.g. past hour/1.0+)
     #Plotting graph
@@ -41,6 +31,7 @@ def plotEq(userChoice, data):
               str(xAnswer[0].upper()+xAnswer[1:].lower()))
     plt.grid()
 
+    #Display the graph
     plt.show()
 
 if __name__ == '__main__':
